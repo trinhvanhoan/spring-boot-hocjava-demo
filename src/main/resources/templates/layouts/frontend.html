@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	th:fragment="layout(title, content)"
 	th:with="head=${head} ?: '', 
-			 footer=${footer} ?: '',
+			 foot=${foot} ?: '',
 			 currentPage=${currentPage} ?: ''">
 
 <head>
@@ -55,8 +55,8 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 	
-	<th:block th:if="${footer != ''}">
-		<th:block th:replace="${footer}"></th:block>
+	<th:block th:if="${foot != ''}">
+		<th:block th:replace="${foot}"></th:block>
 	</th:block>
 	
 	<script th:src="@{/assets/js/app.js}"></script>
