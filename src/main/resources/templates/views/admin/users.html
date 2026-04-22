@@ -1,0 +1,89 @@
+<main xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/backend :: layout(
+          pageTitle='Quản lý người dùng',
+          pageIcon='fa fa-users',
+          pageCurrent='users',
+          pageAction=~{::page-action},
+          pageContent=~{::main-content},
+          pageFoot=~{::page-foot}
+      )}">
+    
+    <div th:fragment="page-action">
+    	<button class="btn btn-primary" data-bs-toggle="modal" 
+    		data-bs-target="#mainModal"
+    		data-modal-size="lg"
+    		th:data-modal-url="@{/admin/users/new}">
+             <i class="fa-solid fa-plus me-1"></i> Thêm người dùng
+         </button>
+    </div>
+
+	<div th:fragment="main-content">
+		 <div th:replace="~{fragments/alert :: alerts}"></div>
+		 
+		 <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white py-3">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-4">
+                        <h5 class="mb-0 text-primary"><i class="fas fa-list me-2"></i>Danh sách người dùng</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+	                      <tr>
+	                          <th scope="col">#ID</th>
+	                          <th scope="col">Tên đăng nhập</th>
+	                          <th scope="col">Họ tên</th>
+	                          <th scope="col">Email</th>
+	                          <th scope="col">Số điện thoại</th>
+	                          <th scope="col">Quyền</th>
+	                          <th scope="col" class="text-center">Trạng thái</th>
+	                          <th scope="col" class="text-end"></th>
+	                      </tr>
+                      </thead>
+                      <tbody th:each="item : ${users}">
+	                      <tr>
+	                          <td th:text="${item.id}">1</td>
+	                          <td class="fw-bold" th:text="${item.username}">admin</td>
+	                          <td th:text="${item.fullName}">Administrator</td>
+	                          <td th:text="${item.email}">admin@gmail.com</td>
+	                          <td th:text="${item.phone}">0980123123</td>
+	                          <td th:text="${item.role}">Admin</td>
+	                          <td class="text-center">
+	                          	<span th:if="${item.status == 0}" class="badge text-bg-secondary text-decoration-line-through">Đã khóa</span>
+	                          	<span th:if="${item.status == 1}" class="badge text-bg-primary">Hoạt động</span>
+	                          </td>
+	                          <td class="text-end">
+	                              <a href="#" class="btn btn-sm btn-outline-primary" title="Sửa/Xem"
+	                              	 data-modal-size="lg"
+	                                 data-bs-toggle="modal" data-bs-target="#mainModal" th:data-modal-url="@{/admin/users/{id}/edit(id=${item.id})}">
+	                                 	<i class="fas fa-edit"></i></a>
+	                              <a href="#" 
+  	                              	 data-bs-toggle="modal" data-bs-target="#mainModal" th:data-modal-url="@{/admin/users/{id}/set-password(id=${item.id})}"
+	                                 class="btn btn-sm btn-outline-info" title="Đặt mật khẩu"><i class="fas fa-key"></i></a>
+	                                 
+	                              <a th:if="${item.status == 1}" th:href="@{/admin/users/{id}/lock(id=${item.id})}" 
+	                                 class="btn btn-sm btn-outline-dark" title="Khóa"><i class="fas fa-lock"></i></a>
+	                                 
+	                              <a th:if="${item.status == 0}" th:href="@{/admin/users/{id}/unlock(id=${item.id})}" 
+	                                 class="btn btn-sm btn-outline-dark" title="Mở khóa"><i class="fas fa-lock-open"></i></a>
+	                                 
+	                              <a th:href="@{/admin/users/{id}/delete(id=${item.id})}"
+	                                 class="btn btn-sm btn-outline-danger" title="Xóa"
+	                                 data-bs-toggle="modal" data-bs-target="#deleteModal"
+	                                 data-pre-message="người dùng"
+	                                 th:data-message="${item.fullName}"><i class="fas fa-trash-alt"></i></a>
+	                                 
+	                              
+	                          </td>
+	                      </tr>
+                      </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+	</div>
+</main>

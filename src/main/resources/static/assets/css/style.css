@@ -1,0 +1,48 @@
+body {
+    font-family: 'Inter', sans-serif;
+
+    --bs-primary-rgb: 79, 70, 229;
+    --bs-link-color: #4F46E5;
+}
+.btn.btn-primary {
+    --bs-btn-bg: #4F46E5;
+    --bs-btn-border-color: #4F46E5;
+}
+.error-page {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.error-code {
+    font-size: 10rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+.error-container {
+    text-align: center;
+    padding: 2rem;
+}
+.btn-home {
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+.btn-home:hover {
+    transform: translateY(-3px);
+}
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/bg-hero.jpg') center;
+    background-size: cover;
+    color: white;
+    padding: 150px 0;
+}
+svg {
+    width: 1em;
+    height: auto;
+    fill: currentColor;
+}

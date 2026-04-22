@@ -1,0 +1,62 @@
+<main xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/frontend :: layout(
+          title='Trang chủ',
+          currentPage='home',
+          content=~{::main-content}
+      )}">
+
+	<div th:fragment="main-content">
+		<div class="hero-section text-center">
+			<div class="container">
+				<h1 class="display-4 fw-bold">Chinh Phục Java Core Từ Con Số 0</h1>
+				<p class="lead mb-4">Xây dựng nền tảng vững chắc để trở thành lập trình viên Backend chuyên nghiệp.</p>
+				<a th:href="@{/about}" class="btn btn-primary btn-lg px-4 gap-3">Xem lộ trình học</a> <a th:href="@{/contact}"
+					class="btn btn-outline-light btn-lg px-4">Đăng ký ngay</a>
+			</div>
+		</div>
+
+		<section class="py-5">
+			<div class="container">
+				<div class="text-center mb-5">
+					<h2 class="fw-bold">Tại sao chọn khóa học này?</h2>
+				</div>
+				<div class="row g-4">
+					<div class="col-md-4">
+						<div class="card h-100 border-0 shadow-sm">
+							<div class="card-body text-center p-4">
+								<div class="fs-1 text-primary mb-3">
+									<i class="fa-solid fa-book-open"></i>
+								</div>
+								<h5 class="card-title">Lý thuyết chuyên sâu</h5>
+								<p class="card-text">Hiểu rõ bản chất của OOP, Memory Management và Java Collections.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card h-100 border-0 shadow-sm">
+							<div class="card-body text-center p-4">
+								<div class="fs-1 text-primary mb-3">
+									<i class="fa-solid fa-award"></i>
+								</div>
+								<h5 class="card-title">Thực hành 70%</h5>
+								<p class="card-text">Làm bài tập thực tế qua từng buổi học, xây dựng Console Application hoàn chỉnh.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card h-100 border-0 shadow-sm">
+							<div class="card-body text-center p-4">
+								<div class="fs-1 text-primary mb-3">
+									<i class="fa-solid fa-headset"></i>
+								</div>
+								<h5 class="card-title">Hỗ trợ trọn đời</h5>
+								<p class="card-text">Tham gia cộng đồng Java Developer, được review code và tư vấn sự nghiệp.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+	</div>
+</main>

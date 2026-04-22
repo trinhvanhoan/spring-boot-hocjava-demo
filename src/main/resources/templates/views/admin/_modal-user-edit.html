@@ -1,0 +1,89 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<div class="modal-header">
+		<h5 class="modal-title">Thêm người dùng mới</h5>
+		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>
+	<form class="ajax-form needs-validation" novalidate th:object="${dto}" th:action="@{/admin/users/update}" method="POST">
+		<input type="hidden" th:field="*{id}">
+		<div class="modal-body">
+			<div th:replace="~{fragments/alert :: alerts}"></div>
+			
+			<div class="row g-3">
+				
+				<!-- Username -->
+				<div class="col-md-12">
+					<label class="form-label">Tên đăng nhập <span class="text-danger">*</span></label>
+					<input type="text"
+						   class="form-control"
+						   th:value="${userInfo.username}" readonly>
+				</div>
+	
+				<!-- Full name -->
+				<div class="col-md-12">
+					<label class="form-label">Họ và tên <span class="text-danger">*</span></label>
+					<input type="text"
+						   class="form-control"
+						   th:field="*{fullName}"
+						   maxlength="100"
+						   required>
+					<div class="invalid-feedback">
+						Họ tên không được để trống (tối đa 100 ký tự)
+					</div>
+				</div>
+	
+				<!-- Email -->
+				<div class="col-md-6">
+					<label class="form-label">Email <span class="text-danger">*</span></label>
+					<input type="email"
+						   class="form-control"
+						   th:field="*{email}"
+						   maxlength="100"
+						   required>
+					<div class="invalid-feedback">
+						Email không hợp lệ
+					</div>
+				</div>
+	
+				<!-- Phone -->
+				<div class="col-md-6">
+					<label class="form-label">Số điện thoại</label>
+					<input type="tel"
+						   class="form-control"
+						   th:field="*{phone}"
+						   pattern="(^$|[0-9]{10})" required>
+					<div class="invalid-feedback">
+						Số điện thoại phải có 10 chữ số
+					</div>
+				</div>
+	
+				<!-- Role -->
+				<div class="col-md-6">
+					<label class="form-label">Vai trò <span class="text-danger">*</span></label>
+					<select class="form-select" th:field="*{role}" required>
+						<option value="">-- Chọn vai trò --</option>
+						<option value="USER">USER</option>
+						<option value="ADMIN">ADMIN</option>
+					</select>
+					<div class="invalid-feedback">
+						Vui lòng chọn vai trò
+					</div>
+				</div>
+	
+				<!-- Status -->
+				<div class="col-md-6">
+					<label class="form-label">Trạng thái</label>
+					<select class="form-select" th:field="*{status}">
+						<option value="1">Hoạt động</option>
+						<option value="0">Khóa</option>
+					</select>
+				</div>
+	
+			</div>
+		</div>
+	
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary">Lưu người dùng</button>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+		</div>
+	</form>
+</div>

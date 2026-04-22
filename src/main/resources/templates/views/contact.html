@@ -1,0 +1,121 @@
+<main xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/frontend :: layout(
+          title='Trang chủ',
+          currentPage='contact',
+          content=~{::main-content}
+      )}">
+
+	<div th:fragment="main-content">
+		<div class="container py-5">
+			<div class="row text-center mb-5">
+				<h2 class="fw-bold">Liên hệ tư vấn</h2>
+				<p class="text-muted">Để lại thông tin, chúng tôi sẽ liên hệ lại bạn trong vòng 24h.</p>
+			</div>
+
+			<div class="row justify-content-center shadow p-4 rounded bg-light">
+				<div class="col-md-5 mb-4 mb-md-0">
+					<h4 class="mb-4">Thông tin liên lạc</h4>
+					<div class="mb-3">
+						<strong><i class="fa-solid fa-location-dot"></i> Địa chỉ:</strong><br> Số 1 - Trường Thi, TP Vinh, Nghệ An
+					</div>
+					<div class="mb-3">
+						<strong><i class="fa-solid fa-envelope"></i> Email:</strong><br> javacore@hoantv.edu.vn
+					</div>
+					<div class="mb-3">
+						<strong><i class="fa-solid fa-phone"></i></i> Hotline:</strong><br> 0912.345.678
+					</div>
+					<div class="mt-4">
+						<div class="ratio ratio-16x9 bg-secondary rounded d-flex align-items-center justify-content-center text-white">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2604.600483181325!2d105.6925374371353!3d18.670103292223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1776157575169!5m2!1svi!2s"
+								width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-7">
+					<div th:if="${createContactSuccess}" class="text-center">
+						<div class="card">
+				    		<div class="card-body p-5">
+				    			<div class="mb-4">
+					                <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+					            </div>
+					            
+					            <h2 class="fw-bold mb-3">Gửi yêu cầu thành công!</h2>
+					            <p class="text-muted mb-4">
+					                Cảm ơn bạn đã quan tâm đến các khóa học của chúng tôi. 
+					                Đội ngũ tư vấn sẽ liên hệ với bạn qua số điện thoại hoặc email trong vòng 24 giờ tới.
+					            </p>
+					
+					            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+					                <a th:href="@{/}" class="btn btn-primary px-4 gap-3">
+					                    <i class="fas fa-home me-2"></i> Quay về trang chủ
+					                </a>
+					                <a th:href="@{/contact}" class="btn btn-outline-secondary px-4">
+					                    Gửi yêu cầu khác
+					                </a>
+					            </div>
+					
+					            <div class="mt-5 p-3 border-top">
+					                <p class="text-secondary mb-0">
+					                    <i class="fas fa-info-circle me-1"></i> 
+					                    Nếu cần hỗ trợ gấp, vui lòng gọi Hotline: <strong>1900-xxxx</strong>
+					                </p>
+					            </div>	
+				    		</div>
+				    	</div>
+					</div>
+					
+					<div th:replace="~{fragments/alert :: alerts}"></div>
+					<form th:if="${createContactSuccess == null}" class="needs-validation" novalidate id="contactForm" th:action="@{/contact}" th:object="${dto}" method="post">
+						<div class="row g-3">
+							<div class="col-md-6">
+								<label th:for="fullName" class="form-label">Họ và tên</label> 
+								<input type="text" class="form-control" th:field="*{fullName}" placeholder="Nguyễn Văn A" required minlength="3">
+								<div class="invalid-feedback">Vui lòng nhập họ tên (tối thiểu 3 ký tự).</div>
+							</div>
+
+							<div class="col-md-6">
+								<label for="email" class="form-label">Email</label> 
+								<input type="email" class="form-control" th:field="*{email}"
+									placeholder="name@example.com" required>
+								<div class="invalid-feedback">Vui lòng nhập địa chỉ email hợp lệ.</div>
+							</div>
+
+							<div class="col-12">
+								<label for="phoneNumber" class="form-label">Số điện thoại</label> 
+								<input type="tel" class="form-control" th:field="*{phoneNumber}"
+									placeholder="09xxxxxxx" required pattern="[0-9]{10,11}">
+								<div class="invalid-feedback">Số điện thoại phải có 10-11 chữ số.</div>
+							</div>
+
+							<div class="col-12">
+								<label for="courseId" class="form-label">Khóa học quan tâm</label> 
+								<select class="form-select" th:field="*{courseId}"
+									required>
+									<option selected disabled value="">Chọn khóa học...</option>
+									<th:block th:each="item:${courses}">
+										<option th:value="${item.id}" th:text="${item.courseName}"></option>
+									</th:block>
+								</select>
+								<div class="invalid-feedback">Vui lòng chọn một khóa học.</div>
+							</div>
+
+							<div class="col-12">
+								<label for="message" class="form-label">Lời nhắn</label>
+								<textarea class="form-control" th:field="*{message}" rows="4" placeholder="Bạn cần tư vấn thêm về..." required></textarea>
+								<div class="invalid-feedback">Vui lòng để lại nội dung lời nhắn.</div>
+							</div>
+
+							<div class="col-12">
+								<button type="submit" class="btn btn-primary w-100 py-2">Gửi đăng ký</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</main>

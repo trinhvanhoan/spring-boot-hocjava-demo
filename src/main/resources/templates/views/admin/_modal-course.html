@@ -1,0 +1,29 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<div class="modal-header">
+		<h5 class="modal-title" th:text="${dto.id == null ? 'Tạo khóa học' : 'Cập nhật khóa học'}">Cập nhật khóa học</h5>
+		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>
+	<form class="ajax-form needs-validation" novalidate th:object="${dto}" th:action="@{/admin/course/save}" method="POST">
+		<input type="hidden" th:field="*{id}">
+		<div class="modal-body">
+			<div th:replace="~{fragments/alert :: alerts}"></div>
+			
+			<!-- Password -->
+			<div>
+				<label class="form-label">Tên khóa học<span class="text-danger">*</span></label>
+				<input type="text"
+					   class="form-control"
+					   th:field="*{courseName}"
+					   required>
+				<div class="invalid-feedback">
+					Tên khóa học không được để trống
+				</div>
+			</div>
+		</div>
+	
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary" th:text="${dto.id == null ? 'Tạo khóa học' : 'Cập nhật khóa học'}"></button>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+		</div>
+	</form>
+</div>

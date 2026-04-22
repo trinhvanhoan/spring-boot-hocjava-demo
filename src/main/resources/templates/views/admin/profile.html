@@ -1,0 +1,106 @@
+<main xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/backend :: layout(
+          pageTitle='Thông tin cá nhân',
+          pageCurrent='profile',
+          pageContent=~{::main-content},
+          pageFoot=~{::page-foot}
+      )}">
+
+	<div th:fragment="main-content">
+		<div th:replace="~{fragments/alert :: alerts}"></div>
+		<div class="row">
+			<div class="col-xl-4 col-lg-5">
+				<div class="card shadow-sm mb-4">
+					<div class="profile-header"></div>
+					<div class="card-body profile-img-container">
+						<h5 class="fw-bold" th:text="${user.fullName}"></h5>
+						
+					</div>
+					<ul class="list-group list-group-flush border-top">
+						<li class="list-group-item d-flex justify-content-between align-items-center py-3"><span class="text-muted"><i
+								class="fa-solid fa-shield-halved me-2"></i> Vai trò</span> 
+								<span class="badge bg-primary rounded-pill" th:text="${user.role}">ADMIN</span>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-items-center py-3">
+							<span class="text-muted"><i	class="fa-solid fa-circle-check me-2"></i> Trạng thái</span> 
+							<span class="text-success small fw-bold" th:text="${user.status == 1 ? 'Đang hoạt động' : 'Đã khóa'}">Đang hoạt động</span>
+						</li>
+								
+						<li class="list-group-item d-flex justify-content-between align-items-center py-3">
+							<span class="text-muted"><i
+								class="fa-solid fa-shield me-2"></i> Bảo mật
+							</span> 
+							<span class="text-success small fw-bold">
+								<button type="button" class="btn btn-danger btn-sm ms-auto"
+									data-bs-toggle="modal" data-bs-target="#mainModal" 
+									th:data-modal-url="@{/admin/profile/change-password}">Đổi mật khẩu</button>
+							</span>
+						</li>
+								
+								
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-xl-8 col-lg-7">
+				<div class="card shadow-sm p-4">
+					<h5 class="fw-bold mb-4 border-bottom pb-2 text-primary">Chi tiết tài khoản</h5>
+					
+					<div th:replace="~{fragments/alert :: alerts}"></div>
+					
+					<form th:action="@{/admin/profile}" method="post" th:object="${dto}" class="needs-validation" novalidate>
+						<input type="hidden" th:field="*{id}">
+						<div class="row g-3 mb-4">
+							<div class="col-md-6">
+								<label class="form-label fw-semibold">Tên đăng nhập</label> 
+									<input type="text" class="form-control bg-light" th:value="${user.username}" readonly>
+								<div class="form-text">Tên đăng nhập không thể thay đổi.</div>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label fw-semibold">Họ và tên</label> 
+								<input type="text"
+									   class="form-control"
+									   th:field="*{fullName}"
+									   maxlength="100"
+									   required>
+								<div class="invalid-feedback">
+									Họ tên không được để trống (tối đa 100 ký tự)
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label fw-semibold">Email</label> 
+								<input type="email"
+									   class="form-control"
+									   th:field="*{email}"
+									   maxlength="100"
+									   required>
+								<div class="invalid-feedback">
+									Email không hợp lệ
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label fw-semibold">Số điện thoại</label> 
+								<input type="tel"
+									   class="form-control"
+									   th:field="*{phone}"
+									   pattern="(^$|[0-9]{10})" required>
+								<div class="invalid-feedback">
+									Số điện thoại phải có 10 chữ số
+								</div>
+							</div>
+						</div>
+
+						<div class="text-end border-top pt-4">
+							<button type="reset" class="btn btn-light px-4 me-2">Hủy bỏ</button>
+							<button type="submit" class="btn btn-primary px-4 shadow">Lưu thay đổi</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div th:fragment="page-foot">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</div>
+</main>

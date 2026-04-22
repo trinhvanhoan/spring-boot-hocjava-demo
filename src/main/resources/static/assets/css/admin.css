@@ -1,0 +1,55 @@
+body {
+    --bs-primary-rgb: 79, 70, 229;
+    --bs-link-color: #4F46E5;
+}
+.btn.btn-primary {
+    --bs-btn-bg: #4F46E5;
+    --bs-btn-border-color: #4F46E5;
+}
+
+.sidebar {
+    .nav-link {
+        --bs-nav-link-color: #333;
+
+        &.active {
+            --bs-nav-link-color: #4F46E5;
+        }
+    }
+}
+
+svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+.form-control[readonly] {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content-wrapper {
+    min-height: calc(100vh - 52px);
+}
+.ajax-form,
+.ajax-form-container {
+	position: relative;
+}
+.ajax-form.is-loading,
+.ajax-form-container.is-loading {
+	filter: blur(1px);
+}
+
+.ajax-form.is-loading:after,
+.ajax-form-container.is-loading:after {
+	content: "";
+	background-color: rgba(0,0,0,0.1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+	
+	pointer-events: all; 
+    cursor: wait;
+	
+}

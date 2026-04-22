@@ -1,0 +1,156 @@
+<main xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/backend :: layout(
+          pageTitle='Quản lý liên hệ',
+          pageIcon='fa fa-address-card',
+          pageCurrent='contacts',
+          pageContent=~{::main-content},
+          pageFoot=~{::page-foot}
+      )}">
+
+	<div th:fragment="main-content">
+		<div th:replace="~{fragments/alert :: alerts}"></div>
+		
+		<div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary h-100">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Tổng yêu cầu</h6>
+                            <h2 class="mb-0" th:text="${contactSummary.totalCount}">128</h2>
+                        </div>
+                        <i class="fas fa-users fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning h-100">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Chưa xử lý (New)</h6>
+                            <h2 class="mb-0" th:text="${contactSummary.pendingCount}">15</h2>
+                        </div>
+                        <i class="fas fa-exclamation-circle fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info h-100">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Đang xử lý</h6>
+                            <h2 class="mb-0" th:text="${contactSummary.processingCount}">98</h2>
+                        </div>
+                        <i class="fas fa-check-circle fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-success h-100">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title">Đã hoàn thành</h6>
+                            <h2 class="mb-0" th:text="${contactSummary.doneCount}">98</h2>
+                        </div>
+                        <i class="fas fa-check-circle fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white py-3">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-4">
+                        <h5 class="mb-0 text-primary"><i class="fas fa-list me-2"></i>Danh sách liên hệ</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <form class="d-flex justify-content-md-end gap-2 filter-form" th:action="@{/admin/contacts}" method="get" th:object="${dto}">
+	                        <div class="input-group w-auto">
+                            	<a th:href="@{/admin/contacts}" class="btn btn-link text-decoration-none ">
+						            <i class="fa fa-times"></i> Xóa bộ lọc
+						        </a>
+                            </div>
+                            <select class="form-select w-auto" th:field="*{courseId}">
+                                <option value="">Tất cả khóa học</option>
+                                <th:block th:each="item:${courses}">
+                                	<option th:value="${item.id}" th:text="${item.courseName}"></option>
+                                </th:block>
+                            </select>
+                            <select class="form-select w-auto" th:field="*{status}">
+                                <option value="">Tất cả trạng thái</option>
+                                <option th:each="item : ${statuses}" 
+						            th:value="${item}" 
+						            th:text="${statusLabels.get(item)}">
+						    	</option>
+                            </select>
+                            <div class="input-group w-auto">
+                                <input type="text" class="form-control" placeholder="Tìm tên, email..." th:field="*{keyword}">
+                                <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                        <tr>
+                            <th scope="col">#ID</th>
+                            <th scope="col">Họ và tên</th>
+                            <th scope="col">Thông tin liên hệ</th>
+                            <th scope="col">Khóa học</th>
+                            <th scope="col">Lời nhắn</th>
+                            <th scope="col">Ngày gửi</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col" class="text-end">Hành động</th>
+                        </tr>
+                        </thead>
+                        <tbody th:each="item: ${page.getContent()}">
+	                        <tr>
+	                            <td th:text="${item.id}">101</td>
+	                            <td class="fw-bold" th:text="${item.fullName}">Nguyễn Văn A</td>
+	                            <td>
+	                                <div><i class="fas fa-envelope text-muted me-1"></i> <span th:text="${item.email}">vana@gmail.com</span></div>
+	                                <div><i class="fas fa-phone text-muted me-1"></i> <span th:text="${item.phoneNumber}"></span></div>
+	                            </td>
+	                            <td><span class="badge bg-info text-dark" th:text="${item.course.courseName}">Java Basic</span></td>
+	                            <td th:text="${item.message}"></td>
+	                            <td>
+	                            	<div th:text="${#temporals.format(item.createdAt, 'dd/MM/yyyy')}"></div>
+									<small th:text="|vào lúc ${#temporals.format(item.createdAt, 'HH:mm')}|"></small>
+	                            </td>
+	                            <td>
+	                            	<div th:switch="${item.status.name()}">
+									    <span 
+								            th:value="${item}"
+								            th:text="${statusLabels.get(item.status)}"
+								            class="badge"
+								            th:classappend="${item.status.name() == 'pending' ? 'bg-warning' : (item.status.name() == 'processing' ? 'bg-info' : 'bg-success')}">
+							    		</span>
+									</div>
+                            	</td>
+	                            <td class="text-end">
+	                                <button 
+	                                	class="btn btn-sm btn-outline-primary action-btn" title="Xử lý" 
+	                                	data-bs-toggle="modal" 
+	                                	data-bs-target="#mainModal"
+	                                	data-modal-size="lg" 
+	                                	th:data-modal-url="@{/admin/contacts/{id}/edit(id=${item.id})}">
+	                                		<i class="fas fa-edit"></i>
+                               		</button>
+	                            </td>
+	                        </tr>
+
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div th:replace="~{fragments/pagination :: pagination(page=${page}, url='/admin/contacts')}"></div>
+        </div>
+
+	</div>
+</main>
