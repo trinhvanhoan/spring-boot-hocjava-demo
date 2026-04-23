@@ -1,0 +1,202 @@
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Astro v5.13.2">
+    <title>Dashboard - Thống kê tổng quát </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+<header class="navbar sticky-top bg-primary flex-md-nowrap p-0 shadow" data-bs-theme="dark"><a
+        class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-3 text-white" href="#">Java Master</a>
+    <ul class="navbar-nav flex-row align-items-center px-3">
+        <li class="nav-item text-nowrap text-white d-none d-md-flex">
+            <a href="#" class="nav-link text-white opacity-75">Xin chào [Admin]</a>
+        </li>
+
+        <li class="nav-item text-nowrap d-md-none">
+            <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </li>
+    </ul>
+</header>
+<div class="container-fluid">
+    <div class="row content-wrapper">
+        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+            <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+                 aria-labelledby="sidebarMenuLabel">
+                <div class="offcanvas-header"><h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+                            aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                        <span>Quản trị</span> <a class="link-secondary" href="#" aria-label="Add a new report">
+                    </a></h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2 active"
+                                                aria-current="page" href="#">
+                            <i class="fa-solid fa-house"></i>
+                            Tổng quan
+                        </a></li>
+                        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <i class="fa-solid fa-address-book"></i>
+                            Liên hệ
+                        </a></li>
+                        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            Khóa học
+                        </a></li>
+                    </ul>
+                    <hr class="my-3">
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                        <span>Báo cáo thống kê</span> <a class="link-secondary" href="#" aria-label="Add a new report">
+                    </a></h6>
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Thống kê tổng quát
+                        </a></li>
+                        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <i class="fa-solid fa-calendar-day"></i>
+                            Tháng hiện tại
+                        </a></li>
+                    </ul>
+                    <hr class="my-3">
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <i class="fa-solid fa-user-gear"></i>
+                            Thông tin cá nhân
+                        </a></li>
+                        <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Đăng xuất
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Thông tin cá nhân</h1>
+            </div>
+
+            <div class="page-content">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <div class="card text-white bg-primary h-100">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Tổng yêu cầu</h6>
+                                    <h2 class="mb-0">128</h2>
+                                </div>
+                                <i class="fas fa-users fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-warning h-100">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Chưa xử lý (New)</h6>
+                                    <h2 class="mb-0">15</h2>
+                                </div>
+                                <i class="fas fa-exclamation-circle fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-success h-100">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Đã hoàn thành</h6>
+                                    <h2 class="mb-0">98</h2>
+                                </div>
+                                <i class="fas fa-check-circle fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-info h-100">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Tổng số khóa học</h6>
+                                    <h2 class="mb-0">5</h2>
+                                </div>
+                                <i class="fas fa-book fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-white py-3 d-flex align-items-center justify-content-between">
+                                <h6 class="m-0 fw-bold text-primary">Xu hướng yêu cầu tư vấn (6 tháng qua)</h6>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="overallTrendChart" style="height: 300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-white py-3">
+                                <h6 class="m-0 fw-bold text-primary">Cơ cấu trạng thái</h6>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="statusPieChart" style="height: 300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Biểu đồ xu hướng (Line Chart)
+    new Chart(document.getElementById('overallTrendChart'), {
+        type: 'line',
+        data: {
+            labels: ["Tháng 11", "Tháng 12", "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4"],
+            datasets: [{
+                label: "Số yêu cầu",
+                data: [150, 220, 180, 290, 310, 420],
+                borderColor: '#4e73df',
+                backgroundColor: 'rgba(78, 115, 223, 0.05)',
+                fill: true,
+                tension: 0.3
+            }]
+        }
+    });
+
+    // Biểu đồ tròn (Pie Chart)
+    new Chart(document.getElementById('statusPieChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ["Hoàn thành", "Đang xử lý", "Đã hủy"],
+            datasets: [{
+                data: [65, 25, 10],
+                backgroundColor: ['#1cc88a', '#f6c23e', '#e74a3b']
+            }]
+        },
+        options: { cutout: '70%' }
+    });
+</script>
+</body>
+</html>

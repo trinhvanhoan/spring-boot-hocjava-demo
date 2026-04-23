@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - Java Core Master</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="assets/images/logo-svg.svg" width="40" height="40" class="me-2" alt="Logo">
+                <span class="text-primary fs-3">Java Master</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 active" href="about.html">Giới thiệu</a></li>
+
+                    <li class="nav-item"><a class="btn btn-primary px-4 rounded-pill shadow-sm ms-3"
+                                            href="contact.html">Liên hệ ngay</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="content">
+    <section id="introduction" class="py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="img-fluid rounded shadow" alt="Java Code">
+                </div>
+                <div class="col-lg-6">
+                    <h6 class="text-primary fw-bold text-uppercase mb-2">Về hệ thống đào tạo</h6>
+                    <h2 class="display-6 fw-bold mb-4">Chương trình đào tạo Java <br><span class="text-primary">Tiêu chuẩn Doanh nghiệp</span></h2>
+
+                    <p class="lead mb-4">
+                        Java không chỉ là một ngôn ngữ, đó là nền tảng của hàng triệu ứng dụng doanh nghiệp toàn cầu. Tại đây, chúng tôi thiết kế các lộ trình học tập chuyên sâu, giúp bạn từ người mới bắt đầu trở thành một kỹ sư phần mềm thực thụ.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="mentors" class="bg-light py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-5">Giảng Viên Chuyên Gia</h2>
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <img src="https://i.pravatar.cc/150?u=2" class="instructor-img mb-3 shadow" alt="Expert">
+                    <h5 class="fw-bold mb-1">Trịnh Văn Hoan</h5>
+                    <p class="text-primary small fw-bold">Senior Web Developer</p>
+                    <p class="text-muted px-3">15+ năm kinh nghiệm tại các tập đoàn công nghệ hàng đầu, chuyên gia Shopify, PHP, .NET &amp; Java.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://i.pravatar.cc/150?u=1" class="instructor-img mb-3 shadow" alt="Expert">
+                    <h5 class="fw-bold mb-1">Nguyễn Minh Anh</h5>
+                    <p class="text-primary small fw-bold">Spring Boot Specialist</p>
+                    <p class="text-muted px-3">Kiến trúc sư hệ thống tại một Ngân hàng lớn, chuyên sâu về Security và Microservices.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://i.pravatar.cc/150?u=3" class="instructor-img mb-3 shadow" alt="Expert">
+                    <h5 class="fw-bold mb-1">Lê Hồng Nam</h5>
+                    <p class="text-primary small fw-bold">Frontend Tech Lead</p>
+                    <p class="text-muted px-3">Chuyên gia tối ưu UI/UX và tích hợp ReactJS với hệ thống Java Backend phức tạp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faqs" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h2 class="fw-bold">Các Câu Hỏi <span class="text-primary">Thường Gặp</span></h2>
+                    <p class="text-muted">Đừng ngần ngại liên hệ nếu bạn có thắc mắc khác về lộ trình học tập.</p>
+                    <img src="https://img.freepik.com/free-vector/questions-concept-illustration_114360-1513.jpg" class="img-fluid w-75" alt="FAQ">
+                </div>
+                <div class="col-lg-7">
+                    <div class="accordion accordion-flush shadow-sm border rounded" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+                                    Người mới bắt đầu chưa biết gì về code có học được không?
+                                </button>
+                            </h2>
+                            <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Hoàn toàn được. Lộ trình tại trung tâm được thiết kế chia làm nhiều cấp độ. Với người mới, chúng tôi có khóa Java Core &amp; Tư duy lập trình, nơi bạn sẽ được học từ những khái niệm cơ bản nhất, cách cài đặt môi trường cho đến khi làm chủ tư duy hướng đối tượng (OOP). Chỉ cần bạn có quyết tâm và kỹ năng tin học văn phòng cơ bản.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+                                    Trung tâm có hỗ trợ việc làm sau khóa học không?
+                                </button>
+                            </h2>
+                            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Có, chúng tôi có mạng lưới 50+ đối tác doanh nghiệp sẵn sàng tiếp nhận học viên tốt nghiệp loại Khá/Giỏi. Ngoài ra còn hỗ trợ sửa CV và Mock Interview.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
+                                    Khóa học tại trung tâm tập trung vào lý thuyết hay thực hành?
+                                </button>
+                            </h2>
+                            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Phương châm của chúng tôi là "Học qua dự án" (Project-based learning). Thời lượng thực hành chiếm hơn 70% tổng thời gian học. Ngay trong khóa học, bạn sẽ được hướng dẫn xây dựng các ứng dụng thực tế như: Hệ thống quản lý nhân sự, Website bán hàng sử dụng Spring Boot, hoặc các ứng dụng RESTful API để làm quen với yêu cầu thực tế của doanh nghiệp.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f4">
+                                    Tôi sẽ được học những công nghệ/framework nào trong lộ trình Java Web?
+                                </button>
+                            </h2>
+                            <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    <p>Để đáp ứng nhu cầu tuyển dụng hiện nay, lộ trình Java Web tại trung tâm không chỉ dạy Java thuần mà còn bao quát các công nghệ hiện đại nhất</p>
+                                    <ul class="list-style">
+                                        <li><strong>Backend:</strong> Java 17+, Spring Boot 3, Hibernate/JPA, Spring Security.</li>
+                                        <li><strong>Database:</strong> MySQL, PostgreSQL hoặc SQL Server.</li>
+                                        <li><strong>Công cụ:</strong> Maven/Gradle, Git, Docker và cách triển khai ứng dụng lên Server.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f5">
+                                    Chứng chỉ của trung tâm có giá trị như thế nào khi đi xin việc?
+                                </button>
+                            </h2>
+                            <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Chứng chỉ tốt nghiệp của trung tâm là minh chứng cho việc bạn đã hoàn thành đầy đủ khối lượng kiến thức và các dự án thực chiến. Tuy nhiên, trong ngành lập trình, "năng lực thực tế" là quan quan trọng nhất. Sản phẩm (Project) bạn làm được cuối khóa chính là "tấm bằng" giá trị nhất để thuyết phục nhà tuyển dụng khi đi phỏng vấn.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-dark text-light py-4 mt-auto">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2026 Java Core Master. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
