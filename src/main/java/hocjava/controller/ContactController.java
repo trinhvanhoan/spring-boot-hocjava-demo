@@ -25,6 +25,7 @@ public class ContactController {
 	private final ContactService contactService;
 	private final CourseService courseService;
 	
+	
 	@GetMapping("/contact")
 	public String contactPage(Model model) {
 		if (!model.containsAttribute("dto")) {
